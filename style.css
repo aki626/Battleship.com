@@ -1,0 +1,39 @@
+/* ====== NEON BATTLESHIP CSS ====== */
+
+body {
+  background: radial-gradient(circle at center, #1a0033, #000);
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  text-align: center;
+  padding-top: 20px;
+}
+
+#board button {
+  width: 45px;
+  height: 45px;
+  margin: 2px;
+  border: 2px solid #4d00ff;
+  background: transparent;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 0 10px #4d00ff;
+}
+
+#board button:hover {
+  box-shadow: 0 0 20px #ff00ff;
+  border-color: #ff00ff;
+}
+
+.hit {
+  background: #ff0033;
+  box-shadow: 0 0 20px #ff0033;
+  border-color: #ff0033;
+}
+
+.miss {
+  background: #0033ff;
+  box-shadow: 0 0 15px #0033ff;
+  border-color: #0033ff;
+}
