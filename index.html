@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Battleship Mini</h2>
+<div id="board"></div>
+
+<script>
+const size = 8;
+const ship = { x: Math.floor(Math.random()*size),
+               y: Math.floor(Math.random()*size) };
+
+const board = document.getElementById("board");
+
+for (let y=0; y<size; y++) {
+  for (let x=0; x<size; x++) {
+    const cell = document.createElement("button");
+    cell.style.width = "40px";
+    cell.style.height = "40px";
+    cell.onclick = () => {
+      if (x === ship.x && y === ship.y) {
+        cell.style.background = "red";
+        cell.innerText = "Hit!";
+        alert("敵艦沈没！");
+      } else {
+        cell.style.background = "#333";
+        cell.innerText = "×";
+      }
+    };
+    board.appendChild(cell);
+  }
+  board.appendChild(document.createElement("br"));
+}
+</script>
+</body>
+</html>
