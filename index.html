@@ -1,35 +1,83 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta charset="UTF-8">
+<title>Neon Battleship</title>
+<style>
+  body {
+    background: radial-gradient(circle at center, #1a0033, #000);
+    color: #fff;
+    font-family: "Orbitron", sans-serif;
+    text-align: center;
+  }
+
+  #board button {
+    width: 45px;
+    height: 45px;
+    margin: 2px;
+    border: 2px solid #4d00ff;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 0 10px #4d00ff;
+  }
+
+  #board button:hover {
+    box-shadow: 0 0 20px #ff00ff;
+    border-color: #ff00ff;
+  }
+
+  .hit {
+    background: #ff0033;
+    box-shadow: 0 0 20px #ff0033;
+    border-color: #ff0033;
+  }
+
+  .miss {
+    background: #0033ff;
+    box-shadow: 0 0 15px #0033ff;
+    border-color: #0033ff;
+  }
+</style>
+</head>
 <body>
-<h2>Battleship Mini</h2>
+
+<h1>NEON BATTLESHIP</h1>
 <div id="board"></div>
 
 <script>
 const size = 8;
-const ship = { x: Math.floor(Math.random()*size),
-               y: Math.floor(Math.random()*size) };
+const ship = {
+  x: Math.floor(Math.random()*size),
+  y: Math.floor(Math.random()*size)
+};
 
 const board = document.getElementById("board");
 
 for (let y=0; y<size; y++) {
   for (let x=0; x<size; x++) {
     const cell = document.createElement("button");
-    cell.style.width = "40px";
-    cell.style.height = "40px";
+
     cell.onclick = () => {
+      if (cell.classList.contains("hit") || cell.classList.contains("miss")) return;
+
       if (x === ship.x && y === ship.y) {
-        cell.style.background = "red";
-        cell.innerText = "Hit!";
+        cell.classList.add("hit");
+        cell.innerText = "★";
         alert("敵艦沈没！");
       } else {
-        cell.style.background = "#333";
+        cell.classList.add("miss");
         cell.innerText = "×";
       }
     };
+
     board.appendChild(cell);
   }
   board.appendChild(document.createElement("br"));
 }
 </script>
+
 </body>
 </html>
